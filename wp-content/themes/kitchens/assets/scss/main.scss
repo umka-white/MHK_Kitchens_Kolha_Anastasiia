@@ -1,0 +1,546 @@
+@import 'normalize.scss';
+@import 'libs.scss';
+@import 'fonts.scss';
+@import 'vars';
+@import 'mixins';
+@import 'header.scss';
+@import 'footer.scss';
+
+body {
+  font-size: 15px;
+  line-height: 28px;
+  color: var(--c-kitchens-text);
+  @include Roboto;
+
+  &.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+body,
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  margin-top: 0 !important;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 1340px;
+  max-width: 100vw;
+  padding: 0 20px;
+
+  @include mediaQuery($media-mob) {
+    padding: 0 15px;
+  }
+}
+
+.flex {
+  display: flex;
+}
+.j-center {
+  justify-content: center;
+}
+.j-start {
+  justify-content: flex-start;
+}
+.a-center {
+  align-items: center;
+}
+.a-end {
+  align-items: flex-end;
+}
+.a-start {
+  align-items: flex-start;
+}
+.baseline {
+  align-items: baseline;
+}
+.all-center {
+  justify-content: center;
+  align-items: center;
+}
+.self-stretch {
+  align-self: stretch;
+}
+.column {
+  flex-direction: column;
+}
+.space-b {
+  justify-content: space-between;
+}
+.no-shrink {
+  flex-shrink: 0;
+}
+.r-reverse {
+  flex-direction: row-reverse;
+}
+.c-reverse {
+  flex-direction: column-reverse;
+}
+.self-center {
+  align-self: center;
+}
+.self-start {
+  align-self: flex-start;
+}
+
+.gap {
+  @include children {
+    &:nth-child(1) {
+      margin-top: 0 !important;
+      margin-left: 0 !important;
+    }
+    &:last-child {
+      margin-bottom: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+}
+
+.btn {
+  @include btn;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--c-kitchens-titles);
+  opacity: 0.9;
+  @include HelveticaBold;
+  margin: 0;
+}
+
+p.section-subtitle {
+  margin: 0;
+  @include sectionSubtitle;
+}
+
+h1 {
+  font-size: 52px;
+  line-height: 58px;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: 42px;
+  line-height: 52px;
+}
+
+h3 {
+  font-size: 32px;
+  line-height: 42px;
+}
+
+h4 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+h5 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+@include mediaQuery($media-tablet-sm) {
+  h1 {
+    font-size: 38px;
+    line-height: 44px;
+    letter-spacing: normal;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  h4 {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  h5 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@include mediaQuery($media-mob) {
+  h1 {
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: normal;
+  }
+
+  h2 {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  h4 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  h5 {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+.btn.color {
+  @include colorBtn;
+}
+
+.section-subtitle {
+  @include sectionSubtitle;
+}
+
+.main-screen {
+  width: 100%;
+  position: relative;
+
+  .content {
+    position: absolute;
+    margin: 38px auto 0;
+    z-index: 2;
+    text-align: center;
+
+    p.section-subtitle {
+      @include headlineSubtitle;
+      text-shadow: 0px 0px 4px #000000;
+      margin-bottom: 4px;
+    }
+
+    h1.headline {
+      color: var(--c-kitchens-white);
+      opacity: 1;
+      text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.502);
+      width: 686px;
+      max-width: 100vw;
+    }
+
+    .btn {
+      padding: 18px 56.8px 14px 59.1px;
+      margin-top: 31px;
+    }
+  }
+
+  .main-slider {
+    .owl-dots {
+      margin: 0 auto;
+      position: absolute;
+      z-index: 100;
+      right: 0;
+      left: 0;
+      bottom: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      list-style: none;
+
+      button.owl-dot {
+        height: 5px;
+        width: 50px;
+        margin: 0 5px;
+        border-radius: 3px;
+        background-color: var(--c-kitchens-white);
+        @include transition3sEase;
+
+        &.active {
+          background-color: var(--c-kitchens-accent);
+        }
+
+        @include hoverActive {
+          background-color: var(--c-kitchens-accent);
+        }
+      }
+    }
+  }
+
+  @include mediaQuery($media-tablet-sm) {
+    .content {
+      .btn {
+        margin-top: 15px;
+      }
+    }
+
+    .main-slider .owl-dots {
+      bottom: 18px;
+    }
+  }
+
+  @include mediaQuery($media-mob) {
+    .content p.section-subtitle {
+      letter-spacing: 1px;
+    }
+
+    .main-slider img {
+      width: 100vw;
+      object-fit: cover;
+      height: 450px;
+    }
+  }
+}
+
+.about-section {
+  padding: 2px 0;
+
+  img {
+    margin-right: 70px;
+    max-width: 50%;
+  }
+
+  .content {
+    width: 579px;
+  }
+
+  p.section-subtitle {
+    margin-bottom: 6px;
+  }
+
+  p.text {
+    margin: 28px 0 30px;
+  }
+
+  .title {
+    width: 486px;
+    max-width: 100%;
+  }
+
+  @include mediaQuery($media-desktop-sm) {
+    img {
+      margin-right: 40px;
+    }
+  }
+
+  @include mediaQuery($media-tablet) {
+    min-height: 400px;
+
+    img,
+    .content {
+      max-width: 45%;
+    }
+    p.section-subtitle {
+      margin-bottom: 0px;
+    }
+    p.text {
+      margin: 3px 0 12px;
+    }
+  }
+
+  @include mediaQuery($media-tablet-sm) {
+    min-height: auto;
+    flex-direction: column-reverse;
+
+    img {
+      margin-right: 0;
+      max-width: 100%;
+    }
+
+    .title {
+      margin: 0 auto;
+    }
+
+    p.section-subtitle {
+      margin-bottom: 6px;
+    }
+
+    p.text {
+      margin: 28px 0 30px;
+    }
+    .content {
+      text-align: center;
+      margin: 40px auto 45px;
+      max-width: 100%;
+    }
+  }
+
+  @include mediaQuery($media-mob) {
+    .title {
+      width: 330px;
+      max-width: 100%;
+    }
+    .content {
+      padding: 0 15px;
+    }
+  }
+}
+
+.reviews {
+  width: 100%;
+  min-height: 600px;
+  padding: 117px 20px;
+  background-color: var(--c-kitchens-light-bg);
+
+  .content {
+    position: relative;
+  }
+
+  .reviews-slider {
+    width: 600px;
+    max-width: 100%;
+    margin: 5px 0 0;
+  }
+
+  .title {
+    width: 600px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  p.section-subtitle {
+    margin-bottom: 9px;
+  }
+
+  .item {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+
+    .text {
+      font-size: 18px;
+      line-height: 32px;
+      margin: 20px 0 15px;
+    }
+  }
+
+  #reviewsNav {
+    width: 1080px;
+    max-width: 100%;
+
+    .owl-prev,
+    .owl-next {
+      top: 50%;
+      position: absolute;
+      z-index: 1;
+      cursor: pointer;
+      color: var(--c-kitchens-accent);
+      @include transition3sEase;
+
+      @include hoverActive {
+        color: var(--c-kitchens-accent-hover);
+      }
+    }
+
+    .owl-prev {
+      left: 0;
+      margin-top: 10px;
+    }
+
+    .owl-next {
+      right: 0;
+      transform: rotate(180deg);
+    }
+  }
+
+  .btn {
+    margin-top: 31px;
+  }
+
+  @include mediaQuery($media-desktop-sm) {
+    #reviewsNav {
+      width: 930px;
+    }
+  }
+
+  @include mediaQuery($media-tablet-sm) {
+    .title {
+      width: 440px;
+    }
+
+    #reviewsNav {
+      width: 740px;
+    }
+  }
+
+  @include mediaQuery($media-mob) {
+    padding: 80px 15px;
+    min-height: 555px;
+
+    .title {
+      max-width: 100vw;
+    }
+    .item .text {
+      font-size: 17px;
+      line-height: 29px;
+    }
+
+    .reviews-slider {
+      width: 330px;
+      max-width: 100vw;
+    }
+  }
+}
+
+.gallery {
+  padding: 85px 0 100px;
+
+  .container {
+    padding: 36px 20px 40px;
+
+    @include children {
+      margin: 0 10px;
+    }
+  }
+
+  .btn {
+    padding: 18px 36.7px 14px 40px;
+  }
+
+  @include mediaQuery($media-desktop-sm) {
+    .container {
+      @include children {
+        width: 230px;
+        height: 230px;
+      }
+    }
+  }
+
+  @include mediaQuery($media-tablet-sm) {
+    .container {
+      @include children {
+        width: 170px;
+        height: 170px;
+      }
+    }
+  }
+
+  @include mediaQuery($media-mob) {
+    .container {
+      padding: 36px 15px 40px;
+      flex-direction: column;
+
+      @include children {
+        width: 310px;
+        height: 310px;
+        margin: 10px 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+// fonts
+
+@mixin Helvetica {
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+@mixin HelveticaBold {
+  font-family: Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+@mixin Roboto {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+@mixin mediaQuery($point) {
+  @media (max-width: $point) {
+    @content;
+  }
+}
+
+@mixin hoverActive {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+  &:active {
+    @content;
+  }
+}
+
+@mixin headlineSubtitle {
+  @include sectionSubtitle(var(--c-kitchens-white));
+}
+
+@mixin sectionSubtitle($color: var(--c-kitchens-accent)) {
+  @include Roboto;
+  font-size: 13px;
+  line-height: 18px;
+  color: $color;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  @include mediaQuery($media-tablet-sm) {
+    font-size: 11px;
+    line-height: 18px;
+    letter-spacing: 1.5px;
+  }
+}
+
+@mixin transition3sEase {
+  transition: 0.3s ease;
+}
+
+// btns
+
+@mixin btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  text-transform: uppercase;
+  cursor: pointer;
+  @include Roboto;
+  @include transition3sEase;
+  letter-spacing: 3px;
+
+  @include mediaQuery($media-mob) {
+    letter-spacing: 2px;
+  }
+}
+
+@mixin headerBtn {
+  padding: 18px 37px 12px 43px;
+  min-width: 192px;
+  min-height: 50px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  position: relative;
+  margin: -4px 1px 0 0;
+
+  @include hoverActive {
+    color: var(--c-kitchens-titles);
+    background-color: var(--c-kitchens-white);
+  }
+}
+
+@mixin colorBtn {
+  background-color: var(--c-kitchens-accent);
+  color: var(--c-kitchens-white);
+  border-radius: 30px;
+  padding: 18px 55px 14px 62px;
+
+  @include hoverActive {
+    background-color: var(--c-kitchens-accent-hover);
+  }
+
+  @include mediaQuery($media-mob) {
+    padding: 16px 25px 12px;
+  }
+}
+
+@mixin children() {
+  & > * {
+    @content();
+  }
+}
